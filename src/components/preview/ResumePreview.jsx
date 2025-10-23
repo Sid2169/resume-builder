@@ -1,5 +1,5 @@
 import { hasResumeContent } from '../../data/resumeModel'
-import { formatDateRange, splitSkills, toHref } from '../../utils/format'
+import { formatDateRange, getContactItems, splitSkills, toHref } from '../../utils/format'
 
 function PreviewSection({ title, children }) {
   return (
@@ -10,31 +10,9 @@ function PreviewSection({ title, children }) {
   )
 }
 
-function contactItemsFor(contact) {
-  const items = []
-
-  if (contact.email) {
-    items.push({ key: 'email', label: contact.email, href: `mailto:${contact.email}` })
-  }
-  if (contact.phone) {
-    items.push({ key: 'phone', label: contact.phone, href: `tel:${contact.phone.replace(/[^\d+]/g, '')}` })
-  }
-  if (contact.location) {
-    items.push({ key: 'location', label: contact.location })
-  }
-  if (contact.website) {
-    items.push({ key: 'website', label: contact.website, href: toHref(contact.website) })
-  }
-  if (contact.linkedin) {
-    items.push({ key: 'linkedin', label: contact.linkedin, href: toHref(contact.linkedin) })
-  }
-
-  return items
-}
-
 export function ResumePreview({ resume }) {
   const { contact, summary, experience, education, skills, projects } = resume
-  const contactItems = contactItemsFor(contact)
+  const contactItems = getContactItems(contact)
   const skillList = splitSkills(skills)
   const hasContent = hasResumeContent(resume)
 

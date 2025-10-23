@@ -17,6 +17,32 @@ export function toHref(value) {
   return `https://${trimmed}`
 }
 
+export function getContactItems(contact = {}) {
+  const items = []
+
+  if (contact.email) {
+    items.push({ key: 'email', label: contact.email, href: `mailto:${contact.email}` })
+  }
+  if (contact.phone) {
+    items.push({
+      key: 'phone',
+      label: contact.phone,
+      href: `tel:${contact.phone.replace(/[^\d+]/g, '')}`,
+    })
+  }
+  if (contact.location) {
+    items.push({ key: 'location', label: contact.location })
+  }
+  if (contact.website) {
+    items.push({ key: 'website', label: contact.website, href: toHref(contact.website) })
+  }
+  if (contact.linkedin) {
+    items.push({ key: 'linkedin', label: contact.linkedin, href: toHref(contact.linkedin) })
+  }
+
+  return items
+}
+
 export function splitSkills(value) {
   return (value || '')
     .split(/[\n,]+/)
