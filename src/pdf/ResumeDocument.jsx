@@ -17,14 +17,21 @@ const styles = StyleSheet.create({
     lineHeight: 1.4,
     color: BODY,
   },
+  header: {
+    paddingBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: RULE,
+  },
   name: {
     fontFamily: 'Helvetica-Bold',
     fontSize: 22,
+    lineHeight: 1.18,
     color: INK,
     letterSpacing: 0.2,
   },
   role: {
     fontSize: 10.5,
+    lineHeight: 1.33,
     color: ACCENT,
     marginTop: 2,
     letterSpacing: 0.3,
@@ -34,6 +41,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     marginTop: 7,
     fontSize: 8.5,
+    lineHeight: 1.3,
     color: MUTED,
   },
   contactItem: {
@@ -53,6 +61,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontFamily: 'Helvetica-Bold',
     fontSize: 9,
+    lineHeight: 1.33,
     letterSpacing: 1.1,
     textTransform: 'uppercase',
     color: ACCENT,
@@ -63,6 +72,7 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     fontSize: 9.5,
+    lineHeight: 1.47,
     color: BODY,
   },
   entry: {
@@ -80,15 +90,18 @@ const styles = StyleSheet.create({
   entryTitle: {
     fontFamily: 'Helvetica-Bold',
     fontSize: 10,
+    lineHeight: 1.3,
     color: INK,
   },
   entrySubtitle: {
     fontSize: 8.5,
+    lineHeight: 1.3,
     color: MUTED,
     marginTop: 1,
   },
   dates: {
     fontSize: 8.5,
+    lineHeight: 1.3,
     color: MUTED,
     textAlign: 'right',
     flexShrink: 0,
@@ -104,20 +117,24 @@ const styles = StyleSheet.create({
   bulletMark: {
     width: 9,
     fontSize: 9.5,
+    lineHeight: 1.47,
     color: ACCENT,
   },
   bulletText: {
     flexGrow: 1,
     fontSize: 9.5,
+    lineHeight: 1.47,
     color: BODY,
   },
   details: {
     fontSize: 9,
+    lineHeight: 1.44,
     color: BODY,
     marginTop: 2,
   },
   skills: {
     fontSize: 9.5,
+    lineHeight: 1.47,
     color: BODY,
   },
   projectHeader: {
@@ -128,11 +145,13 @@ const styles = StyleSheet.create({
   projectName: {
     fontFamily: 'Helvetica-Bold',
     fontSize: 10,
+    lineHeight: 1.3,
     color: INK,
     marginRight: 8,
   },
   projectLink: {
     fontSize: 8.5,
+    lineHeight: 1.3,
     color: ACCENT,
     textDecoration: 'none',
   },
@@ -181,7 +200,7 @@ export function ResumeDocument({ resume }) {
       creator="Resume Builder"
     >
       <Page size="A4" style={styles.page}>
-        <View>
+        <View style={styles.header}>
           <Text style={styles.name}>{contact.name || 'Your Name'}</Text>
           {contact.title && <Text style={styles.role}>{contact.title}</Text>}
           <ContactLine contact={contact} />
