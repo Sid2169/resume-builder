@@ -18,6 +18,7 @@ Answers captured before implementation started:
 | Page size | A4, no photo |
 | Delivery | One feature branch and one PR, merge commit (no squash), delete local and remote branch |
 | Deployment | GitHub Pages via GitHub Actions |
+| Repository visibility | Public (required for Pages on the free plan) |
 | Quality bar | Lint and production build |
 
 ## Desired features (in scope)
@@ -69,6 +70,8 @@ Derived from the deployed projects that predate this repository
 - Sample data is clearly fictional and safe to show in a public demo
 - Vite `base: './'` so the build works from the GitHub Pages project path
 - Pages sourced from GitHub Actions; deploy workflow runs on pushes to `main`
+- The repository was archived and private at kickoff; it is unarchived and made
+  public so Pages can serve the demo on the current plan
 
 ## Git plan
 
