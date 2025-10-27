@@ -9,7 +9,7 @@ import { SummaryForm } from './components/editor/SummaryForm'
 import { PaperPreview } from './components/preview/PaperPreview'
 import { SectionNav } from './components/SectionNav'
 import { hasResumeContent } from './data/resumeModel'
-import { sampleResume } from './data/sampleResume'
+import { getRandomSampleResume } from './data/sampleResumes'
 import { usePersistentResume } from './hooks/usePersistentResume'
 
 const SAVE_LABELS = {
@@ -51,12 +51,12 @@ function App() {
   const handleLoadSample = () => {
     if (
       hasResumeContent(resume) &&
-      !window.confirm('Replace the current resume with the sample resume?')
+      !window.confirm('Replace the current resume with a randomly selected sample?')
     ) {
       return
     }
 
-    replaceResume(sampleResume)
+    replaceResume(getRandomSampleResume())
     setView('edit')
   }
 
@@ -83,7 +83,7 @@ function App() {
 
   return (
     <div className="app-shell">
-      <SectionNav view={view} onNavigate={handleNavigate} onPreview={() => handleNavigate('preview')} />
+      <SectionNav view={view} projectsLabel={resume.projectsLabel} onNavigate={handleNavigate} onPreview={() => handleNavigate('preview')} />
       <header className="app-header">
         <div className="brand">
           <span className="brand__mark" aria-hidden="true">
@@ -170,6 +170,7 @@ function App() {
               onChange={(value) => updateSection('skills', value)}
             />
             <ProjectsForm
+              title={resume.projectsLabel}
               items={resume.projects}
               onChange={(value) => updateSection('projects', value)}
             />

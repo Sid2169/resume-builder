@@ -9,8 +9,11 @@ const SECTIONS = [
   { id: 'projects', label: 'Projects', path: 'M3 3h7v7H3V3Zm11 0h7v7h-7V3ZM3 14h7v7H3v-7Zm11 0h7v7h-7v-7Z' },
 ]
 
-export function SectionNav({ view, onNavigate, onPreview }) {
+export function SectionNav({ view, onNavigate, onPreview, projectsLabel = 'Projects' }) {
   const [activeSection, setActiveSection] = useState('contact')
+  const sections = SECTIONS.map((section) =>
+    section.id === 'projects' ? { ...section, label: projectsLabel } : section,
+  )
 
   useEffect(() => {
     let frame
@@ -46,7 +49,7 @@ export function SectionNav({ view, onNavigate, onPreview }) {
 
   return (
     <nav className="section-nav" aria-label="Resume sections">
-      {SECTIONS.map(({ id, label, path }) => (
+      {sections.map(({ id, label, path }) => (
         <a
           key={id}
           className={`section-nav__link${view !== 'preview' && activeSection === id ? ' is-active' : ''}`}

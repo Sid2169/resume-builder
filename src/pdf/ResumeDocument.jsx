@@ -277,7 +277,7 @@ export function ResumeDocument({ resume }) {
         )}
 
         {projects.length > 0 && (
-          <Section title="Projects">
+          <Section title={resume.projectsLabel || 'Projects'}>
             {projects.map((project) => (
               <View key={project.id} style={styles.entry} wrap={false}>
                 <View style={styles.projectHeader}>

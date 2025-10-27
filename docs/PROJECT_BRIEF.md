@@ -69,7 +69,10 @@ Derived from the deployed projects that predate this repository
 - Plain CSS custom properties; no UI framework
 - `@react-pdf/renderer` 4.3.1 for A4 PDF generation
 - Resume state shape kept in one model module with normalization for safe reloads
-- Sample data is clearly fictional and safe to show in a public demo
+- Load sample randomly chooses Alan Turing, Claude Shannon, or Linus Torvalds with
+  equal probability. Turing and Shannon have linked Research sections; Torvalds
+  has linked Projects. Unverified contact details are left blank. Sources are
+  linked in the README.
 - Vite `base: './'` so the build works from the GitHub Pages project path
 - Pages sourced from GitHub Actions; deploy workflow runs on pushes to `main`
 - The repository was archived and private at kickoff; it is unarchived and made

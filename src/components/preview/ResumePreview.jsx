@@ -115,7 +115,7 @@ export function ResumePreview({ resume }) {
       )}
 
       {projects.length > 0 && (
-        <PreviewSection title="Projects">
+        <PreviewSection title={resume.projectsLabel || 'Projects'}>
           {projects.map((project) => (
             <article className="paper__entry paper__entry--project" key={project.id}>
               <div className="paper__project-head">

@@ -84,6 +84,7 @@ export function createEmptyResume() {
     experience: [],
     education: [],
     skills: '',
+    projectsLabel: 'Projects',
     projects: [],
   }
 }
@@ -113,6 +114,7 @@ export function normalizeResume(value) {
       ? source.education.map(normalizeEducation)
       : [],
     skills: text(source.skills),
+    projectsLabel: source.projectsLabel === 'Research' ? 'Research' : 'Projects',
     projects: Array.isArray(source.projects)
       ? source.projects.map(normalizeProject)
       : [],
