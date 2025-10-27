@@ -1,16 +1,83 @@
-# React + Vite
+# Resume Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An ATS-friendly resume editor with a live A4 preview, browser autosave, and one-click PDF export.
 
-Currently, two official plugins are available:
+**Live app:** https://sid2169.github.io/resume-builder/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- Contact details, professional summary, experience, education, skills, and projects
+- Add and remove experience, education, and project entries
+- Live A4 preview that stays in sync with every edit
+- Autosave to `localStorage` with a visible save status
+- Sample resume for a quick start and a clear/reset action
+- Clean, single-column, ATS-friendly PDF export
+- Responsive editor with Edit/Preview tabs on mobile
+- Dark cyan editor theme with a print-first white paper preview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech stack
 
-## Expanding the ESLint configuration
+- React 19
+- Vite 7
+- Plain CSS with custom properties
+- `@react-pdf/renderer` for PDF generation
+- GitHub Actions and GitHub Pages for deployment
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting started
+
+```bash
+npm install
+npm run dev
+```
+
+Open the URL printed by Vite (usually `http://localhost:5173`).
+
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Create a production build in `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+
+## How it works
+
+- Resume state lives in a single normalized model in `src/data/resumeModel.js`.
+- Changes are debounced and saved to `localStorage` under `resume-builder:resume:v1`.
+- The preview and PDF share the same formatting helpers so the exported document
+  matches what you see.
+- The PDF library is loaded on demand when you click **Download PDF**, keeping the
+  initial page load small.
+- Everything runs in the browser. No resume data is sent to a server.
+
+## Deployment
+
+The workflow in `.github/workflows/deploy.yml` builds and deploys the app to
+GitHub Pages on every push to `main`.
+
+For a fresh repository, enable GitHub Pages with **Source: GitHub Actions** under
+Settings → Pages.
+
+Vite uses `base: './'`, so the build works from the `/resume-builder/` project path.
+
+## Project structure
+
+```text
+src/
+  components/
+    editor/     Form primitives and section editors
+    preview/    Live A4 preview and scaling
+  data/         Resume model and sample resume
+  hooks/        localStorage-backed resume state
+  pdf/          ATS PDF document and download helper
+  utils/        Shared formatting helpers
+docs/
+  PROJECT_BRIEF.md  Recorded preferences, scope, and design direction
+```
+
+## Design
+
+The editor follows the dark, cyan-accented visual language used in earlier
+projects (notably TicTac), while the resume itself is a white, single-column,
+print-first document. See `docs/PROJECT_BRIEF.md` for the full brief.
