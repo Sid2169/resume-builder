@@ -4,6 +4,8 @@ An ATS-friendly resume editor with a live A4 preview, browser autosave, and one-
 
 **Live app:** https://sid2169.github.io/resume-builder/
 
+**Creator:** [Siddhartha](https://sidsingh.vercel.app/) · [GitHub](https://github.com/Sid2169) · [LinkedIn](https://www.linkedin.com/in/siddhartha-suman-952a64256/)
+
 ## Features
 
 - Contact details, professional summary, experience, education, skills, and projects
@@ -79,5 +81,6 @@ docs/
 ## Design
 
 The editor follows the dark, cyan-accented visual language used in earlier
-projects (notably TicTac), while the resume itself is a white, single-column,
+projects (notably TicTac), with solid surface colors and flat CTA fills instead
+of gradients or glass effects. The resume itself is a white, single-column,
 print-first document. See `docs/PROJECT_BRIEF.md` for the full brief.

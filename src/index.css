@@ -4,6 +4,7 @@
   --bg-soft: #171c23;
   --surface: #1d242d;
   --surface-raised: #232c36;
+  --surface-hover: #28323d;
   --surface-input: #141a21;
   --border: rgba(238, 242, 245, 0.08);
   --border-strong: rgba(238, 242, 245, 0.16);
@@ -11,11 +12,18 @@
   --text-muted: #9aa6b2;
   --text-dim: #77838f;
   --accent: #00adb5;
+  --accent-hover: #00c5ce;
   --accent-strong: #17e3a1;
   --accent-contrast: #062a2c;
+  --accent-surface: #12322f;
+  --accent-border: #1d5a4c;
   --gold: #f8b400;
+  --gold-border: #4d3d16;
   --danger: #ff4c29;
   --danger-soft: #ff8b73;
+  --danger-surface: #2b1a17;
+  --danger-surface-hover: #3a211c;
+  --danger-border: #5c2a22;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
@@ -79,6 +87,18 @@ ul {
 
 #root {
   min-height: 100vh;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 ::selection {

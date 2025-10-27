@@ -53,6 +53,8 @@ Derived from the deployed projects that predate this repository
 (`sketch`, `Calc`, `TicTac`, `Travel`, `Restaurant`):
 
 - Dark surfaces with a single saturated accent, generous rounding, soft depth
+- Solid color styling: flat fills for surfaces and CTAs, no gradients, no
+  backdrop blur, and no glass effects
 - Cyan primary accent (`#00ADB5`) with mint highlight (`#17E3A1`) and warm gold
   (`#F8B400`) as a secondary accent, following the TicTac theme tokens
 - Uppercase micro-labels with tracked letters
@@ -81,5 +83,6 @@ Derived from the deployed projects that predate this repository
 - PR merged with a merge commit, never squashed
 - Original branch deleted locally and remotely after merge
 
-Note: GitHub controls the timestamp of the PR merge commit, so that one commit
-will carry the actual merge date. Every feature commit is backdated.
+Note: `main` was later rewritten so the merge commit is also backdated to
+2025-10-27. GitHub's PR metadata still records the original merged-at timestamp
+and merge SHA because those fields are immutable.
