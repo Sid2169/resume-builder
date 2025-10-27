@@ -16,7 +16,6 @@ export function ExperienceForm({ items, onChange }) {
     <SectionCard
       eyebrow="03"
       title="Experience"
-      description="List roles in reverse chronological order."
       action={
         <button type="button" className="btn btn--ghost btn--sm" onClick={add}>
           Add role
@@ -25,7 +24,7 @@ export function ExperienceForm({ items, onChange }) {
     >
       <div className="entry-list">
         {items.length === 0 && (
-          <EmptyHint>No roles yet. Add your most recent position first.</EmptyHint>
+          <EmptyHint>No roles yet.</EmptyHint>
         )}
 
         {items.map((item, index) => (
@@ -66,7 +65,6 @@ export function ExperienceForm({ items, onChange }) {
                 value={item.end}
                 onChange={(value) => update(item.id, { end: value })}
                 placeholder="Present"
-                hint="Leave blank for your current role."
               />
             </div>
 

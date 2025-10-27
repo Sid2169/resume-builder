@@ -1,6 +1,6 @@
 export function SectionCard({ eyebrow, title, description, action, children }) {
   return (
-    <section className="section-card">
+    <section className="section-card" id={`resume-${title.toLowerCase()}`} tabIndex={-1} aria-label={title}>
       <header className="section-card__header">
         <div className="section-card__heading">
           {eyebrow && <span className="eyebrow">{eyebrow}</span>}

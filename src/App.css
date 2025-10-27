@@ -1,8 +1,94 @@
 .app-shell {
+  margin-left: 56px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: var(--bg);
+}
+
+.section-nav {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 30;
+  width: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-right: 1px solid var(--border-strong);
+  background: var(--bg-soft);
+}
+
+.section-nav__link {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.section-nav__link svg {
+  width: 21px;
+  height: 21px;
+}
+
+.section-nav__divider {
+  width: 24px;
+  height: 1px;
+  flex-shrink: 0;
+  background: var(--border-strong);
+}
+
+.section-nav__link:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.section-nav__link.is-active {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.section-nav__link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.section-nav__tooltip {
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface-raised);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+}
+
+.section-nav__link:hover .section-nav__tooltip,
+.section-nav__link:focus-visible .section-nav__tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.section-card:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* ---------- Header ---------- */
@@ -464,13 +550,6 @@
   padding: 2px 2px 12px;
 }
 
-.preview-panel__meta {
-  margin-top: 3px;
-  font-size: 0.72rem;
-  letter-spacing: 0.02em;
-  color: var(--text-dim);
-}
-
 .preview-panel__badge {
   padding: 0.3rem 0.55rem;
   border: 1px solid var(--accent-border);
@@ -875,6 +954,20 @@
 }
 
 @media (max-width: 640px) {
+  .app-shell {
+    margin-left: 44px;
+  }
+
+  .section-nav {
+    width: 44px;
+    gap: 8px;
+  }
+
+  .section-nav__link {
+    width: 36px;
+    height: 40px;
+  }
+
   .app-header {
     padding: 12px 16px;
   }

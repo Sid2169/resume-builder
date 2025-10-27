@@ -56,7 +56,6 @@ export function ContactForm({ contact, onChange }) {
     <SectionCard
       eyebrow="01"
       title="Contact"
-      description="The essentials at the top of your resume. Keep this line short."
     >
       <div className="field-grid">
         {contactFields.map((field) => (

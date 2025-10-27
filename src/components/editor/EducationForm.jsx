@@ -15,7 +15,6 @@ export function EducationForm({ items, onChange }) {
     <SectionCard
       eyebrow="04"
       title="Education"
-      description="Degrees, diplomas, or certifications with a formal program."
       action={
         <button type="button" className="btn btn--ghost btn--sm" onClick={add}>
           Add education
@@ -24,7 +23,7 @@ export function EducationForm({ items, onChange }) {
     >
       <div className="entry-list">
         {items.length === 0 && (
-          <EmptyHint>No education added yet. Include your highest qualification.</EmptyHint>
+          <EmptyHint>No education added yet.</EmptyHint>
         )}
 
         {items.map((item, index) => (
@@ -74,7 +73,6 @@ export function EducationForm({ items, onChange }) {
               onChange={(value) => update(item.id, { details: value })}
               rows={2}
               placeholder="CGPA: 8.6/10 · Relevant coursework or activities"
-              hint="Keep this to one short line."
             />
           </EntryCard>
         ))}

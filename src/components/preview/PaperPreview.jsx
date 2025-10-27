@@ -16,7 +16,8 @@ export function PaperPreview({ resume }) {
 
     const update = () => {
       const availableWidth = viewport.clientWidth
-      const nextScale = Math.min(1, Math.max(0.35, (availableWidth - 8) / PAPER_WIDTH))
+      if (!availableWidth) return
+      const nextScale = Math.min(1, Math.max(0, (availableWidth - 8) / PAPER_WIDTH))
 
       setScale((current) => (Math.abs(current - nextScale) < 0.001 ? current : nextScale))
       setPaperHeight((current) => (current === paper.scrollHeight ? current : paper.scrollHeight))

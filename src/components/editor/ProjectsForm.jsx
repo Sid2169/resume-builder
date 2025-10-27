@@ -15,7 +15,6 @@ export function ProjectsForm({ items, onChange }) {
     <SectionCard
       eyebrow="06"
       title="Projects"
-      description="Show work that proves the skills you want to be hired for."
       action={
         <button type="button" className="btn btn--ghost btn--sm" onClick={add}>
           Add project
@@ -24,7 +23,7 @@ export function ProjectsForm({ items, onChange }) {
     >
       <div className="entry-list">
         {items.length === 0 && (
-          <EmptyHint>No projects yet. Two or three strong projects are plenty.</EmptyHint>
+          <EmptyHint>No projects yet.</EmptyHint>
         )}
 
         {items.map((item, index) => (
@@ -54,8 +53,7 @@ export function ProjectsForm({ items, onChange }) {
               value={item.description}
               onChange={(value) => update(item.id, { description: value })}
               rows={2}
-              placeholder="What it does, the stack, and one result you are proud of."
-              hint="One or two lines. Lead with impact."
+              placeholder="Project description"
             />
           </EntryCard>
         ))}

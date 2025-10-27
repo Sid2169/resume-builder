@@ -46,7 +46,6 @@ export function ResumePreview({ resume }) {
       {!hasContent && (
         <div className="paper__empty">
           <p>Your resume preview will appear here.</p>
-          <p>Start with the contact section or load the sample resume.</p>
         </div>
       )}
 

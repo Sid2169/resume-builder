@@ -8,7 +8,6 @@ export function BulletField({ value = [], onChange }) {
       onChange={(text) => onChange(text.split('\n'))}
       rows={5}
       placeholder={'Shipped a feature that improved…\nReduced…'}
-      hint="One highlight per line. Start with an action verb and add a measurable result when possible."
     />
   )
 }

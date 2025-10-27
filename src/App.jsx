@@ -7,6 +7,7 @@ import { ProjectsForm } from './components/editor/ProjectsForm'
 import { SkillsForm } from './components/editor/SkillsForm'
 import { SummaryForm } from './components/editor/SummaryForm'
 import { PaperPreview } from './components/preview/PaperPreview'
+import { SectionNav } from './components/SectionNav'
 import { hasResumeContent } from './data/resumeModel'
 import { sampleResume } from './data/sampleResume'
 import { usePersistentResume } from './hooks/usePersistentResume'
@@ -32,6 +33,19 @@ function App() {
 
   const updateSection = (section, value) => {
     setResume((current) => ({ ...current, [section]: value }))
+  }
+
+  const handleNavigate = (id) => {
+    setView(id === 'preview' ? 'preview' : 'edit')
+    window.requestAnimationFrame(() => {
+      const section = document.getElementById(`resume-${id}`)
+      if (!section) return
+      const headerHeight = document.querySelector('.app-header')?.getBoundingClientRect().height || 0
+      const top = window.scrollY + section.getBoundingClientRect().top - headerHeight - 20
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      section.focus({ preventScroll: true })
+      window.scrollTo({ top, behavior: reducedMotion ? 'instant' : 'smooth' })
+    })
   }
 
   const handleLoadSample = () => {
@@ -69,6 +83,7 @@ function App() {
 
   return (
     <div className="app-shell">
+      <SectionNav view={view} onNavigate={handleNavigate} onPreview={() => handleNavigate('preview')} />
       <header className="app-header">
         <div className="brand">
           <span className="brand__mark" aria-hidden="true">
@@ -162,6 +177,8 @@ function App() {
         </section>
 
         <aside
+          id="resume-preview"
+          tabIndex={-1}
           className={`workspace__panel workspace__panel--preview ${
             view === 'edit' ? 'is-hidden-mobile' : ''
           }`}
@@ -171,7 +188,6 @@ function App() {
             <div className="preview-panel__header">
               <div>
                 <span className="eyebrow">Live preview</span>
-                <p className="preview-panel__meta">A4 · 210 × 297 mm</p>
               </div>
               <span className="preview-panel__badge">ATS-ready</span>
             </div>
@@ -181,10 +197,6 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <p>
-          Built with React, Vite, and @react-pdf/renderer. Your data never leaves
-          this browser.
-        </p>
         <p className="app-footer__credit">
           <span className="app-footer__role">Created by</span>
           <a
